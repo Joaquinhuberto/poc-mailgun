@@ -1,0 +1,14 @@
+{
+  "name": "poc-mailgun",
+  "version": "1.0.0",
+  "description": "Prueba de concepto dle uso de mailgun en la gestión e importación de lead en LeadIn",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joaquín García",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
