@@ -19,7 +19,7 @@ app.post('/newlead', function(req, res){
     console.log("\tFrom:", req.body.from);
     console.log("\tSubject:", req.body.subject);
     console.log("\t---------------------------------------------------------------------------");
-    console.log("Request: ",req.body);
+    // console.log("Request: ",req.body);
     console.log("---------------------------------------------------------------------------");
     //fs.writeFile('/tmp/'+ req.query.dealerid +'_'+req.body.timestamp +'.html',  req.body.bodyhtml  , function(error){
     //    if (error)
