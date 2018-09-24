@@ -8,7 +8,8 @@ var body_parser = require('body-parser');
 
 var app = express();
 
-app.use(body_parser.urlencoded({extended:true}));
+app.use(body_parser.json({limit: '50mb'}));
+app.use(body_parser.urlencoded({limit: '50mb', extended: true}));
 
 app.post('/newlead', function(req, res){
 
@@ -17,8 +18,6 @@ app.post('/newlead', function(req, res){
     console.log("\tSender:", req.body.sender);
     console.log("\tFrom:", req.body.from);
     console.log("\tSubject:", req.body.subject);
-    //var date = new Date(req.body.timestamp*1000);
-    //console.log("\tTimestamp:", date.toISOString());
     console.log("\t---------------------------------------------------------------------------");
     console.log("Request: ",req.body);
     console.log("---------------------------------------------------------------------------");
