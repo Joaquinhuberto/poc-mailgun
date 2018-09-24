@@ -4,7 +4,7 @@
 
 var express = require('express');
 var body_parser = require('body-parser');
-var fs=require('fs');
+//var fs=require('fs');
 
 var app = express();
 
@@ -30,7 +30,8 @@ app.post('/newlead', function(req, res){
     //});
     //res.status(200);
     //res.end('It worked!!!');
-    //res.send();
+    res.render('It worked!')
+    res.end();
 
 });
 
