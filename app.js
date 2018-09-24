@@ -17,8 +17,8 @@ app.post('/newlead', function(req, res){
     console.log("\tSender:", req.body.sender);
     console.log("\tFrom:", req.body.from);
     console.log("\tSubject:", req.body.subject);
-    var date = new Date(req.body.timestamp*1000);
-    console.log("\tTimestamp:", date.toISOString());
+    //var date = new Date(req.body.timestamp*1000);
+    //console.log("\tTimestamp:", date.toISOString());
     console.log("\t---------------------------------------------------------------------------");
     console.log("Request: ",req.body);
     console.log("---------------------------------------------------------------------------");
