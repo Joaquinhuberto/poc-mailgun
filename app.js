@@ -21,13 +21,13 @@ app.post('/newlead', function(req, res){
     console.log("\tTimestamp:", date.toISOString());
     console.log("");
 
-    fs.writeFile('./'+ req.query.dealerid +'_'+req.body.timestamp +'.html',  req.body.bodyhtml  , function(error){
+    fs.writeFile('/tmp/'+ req.query.dealerid +'_'+req.body.timestamp +'.html',  req.body.bodyhtml  , function(error){
         if (error)
         console.log(error);
     else
         console.log('El archivo fue creado');
     });
-    res.end('It worked!');
+    res.end('It worked!!!');
 
 });
 
