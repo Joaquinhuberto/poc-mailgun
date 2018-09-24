@@ -19,14 +19,15 @@ app.post('/newlead', function(req, res){
     console.log("\tSubject:", req.body.subject);
     var date = new Date(req.body.timestamp*1000);
     console.log("\tTimestamp:", date.toISOString());
-    console.log("");
-
-    fs.writeFile('/tmp/'+ req.query.dealerid +'_'+req.body.timestamp +'.html',  req.body.bodyhtml  , function(error){
-        if (error)
-        console.log(error);
-    else
-        console.log('El archivo fue creado');
-    });
+    console.log("\t---------------------------------------------------------------------------");
+    console.log("Request: ",req.body);
+    console.log("---------------------------------------------------------------------------");
+    //fs.writeFile('/tmp/'+ req.query.dealerid +'_'+req.body.timestamp +'.html',  req.body.bodyhtml  , function(error){
+    //    if (error)
+    //    console.log(error);
+    //else
+    //    console.log('El archivo fue creado');
+    //});
     res.end('It worked!!!');
 
 });
