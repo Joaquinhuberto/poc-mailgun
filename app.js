@@ -28,7 +28,9 @@ app.post('/newlead', function(req, res){
     //else
     //    console.log('El archivo fue creado');
     //});
-    res.end('It worked!!!');
+    res.status(200);
+    //res.end('It worked!!!');
+    res.send();
 
 });
 
