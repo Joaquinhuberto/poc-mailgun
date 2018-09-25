@@ -1,6 +1,15 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://usersaurio:passwordsaurio@pre-cnvwa.dapdacrm.com:27017/leadin');
+const options = {
+    useNewUrlParser: true,
+    autoIndex: false,
+    reconnectTries: 10,
+    reconnectInterval: 500,
+
+
+    connectTimeoutMS: 10000
+};
+mongoose.connect('mongodb://usersaurio:passwordsaurio@pre-cnvwa.dapdacrm.com:27017/leadin', options);
 
 
 db = mongoose.connection;
