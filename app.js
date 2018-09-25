@@ -4,7 +4,8 @@
 
 var express = require('express');
 var body_parser = require('body-parser');
-//var fs=require('fs');
+var Message = require('./models/message.model');
+var mongoose = require('./connect')
 
 var app = express();
 
@@ -19,16 +20,25 @@ app.post('/newlead', function(req, res){
     console.log("\tFrom:", req.body.from);
     console.log("\tSubject:", req.body.subject);
     console.log("\t---------------------------------------------------------------------------");
-    // console.log("Request: ",req.body);
+
+     //console.log("Request: ",req.body);
+    var message = new Message(req.body);
+
+    message.dealer = req.query.dealerid;
+
+    Message.create(message, function(err) {
+        if (err) throw err;
+
+    });
     console.log("---------------------------------------------------------------------------");
-    //fs.writeFile('/tmp/'+ req.query.dealerid +'_'+req.body.timestamp +'.html',  req.body.bodyhtml  , function(error){
-    //    if (error)
-    //    console.log(error);
-    //else
-    //    console.log('El archivo fue creado');
-    //});
     res.send('It worked!!!');
     res.end();
+
+    /*
+    Message.create(message, function(err, inserted){
+        console.log("Insert message OK ", inserted);
+
+    })*/
 
 });
 
