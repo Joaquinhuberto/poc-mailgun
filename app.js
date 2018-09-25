@@ -19,7 +19,6 @@ app.post('/newlead', function(req, res){
     console.log("req.query: ", req.query);
     console.log("********************************************************************************");
     console.log("req.body: ", req.body);
-    console.log("req.body: ", req.body);
     console.log("********************************************************************************");
     var dealer = req.query.dealerid;
 
