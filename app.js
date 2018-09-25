@@ -11,13 +11,15 @@ var app = express();
 
 app.use(body_parser.json({limit: '50mb'}));
 app.use(body_parser.urlencoded({limit: '50mb', extended: false}));
+app.use(bodyParser.text({ type: 'text/html' }));
 
 app.post('/newlead', function(req, res){
 
     console.log("********************************************************************************");
     console.log("req.query: ", req.query);
     console.log("********************************************************************************");
-    console.log("req.body: ", req.par);
+    console.log("req.body: ", req.body);
+    console.log("req.body: ", req.body);
     console.log("********************************************************************************");
     var dealer = req.query.dealerid;
 
