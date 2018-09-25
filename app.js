@@ -20,7 +20,8 @@ app.post('/newlead', function(req, res){
     console.log("\tFrom:", req.body.from);
     console.log("\tSubject:", req.body.subject);
     console.log("\t---------------------------------------------------------------------------");
-
+    res.send('It worked!!!');
+    res.end();
      //console.log("Request: ",req.body);
     var message = new Message(req.body);
 
@@ -31,8 +32,7 @@ app.post('/newlead', function(req, res){
 
     });
     console.log("---------------------------------------------------------------------------");
-    res.send('It worked!!!');
-    res.end();
+
 
     /*
     Message.create(message, function(err, inserted){
