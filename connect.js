@@ -9,7 +9,7 @@ const options = {
 
     connectTimeoutMS: 10000
 };
-mongoose.connect('mongodb://usersaurio:passwordsaurio@pre-cnvwa.dapdacrm.com:27017/leadin', options);
+mongoose.connect('mongodb://usersaurio:passwordsaurio1@ds113923.mlab.com:13923/leadin');
 
 
 db = mongoose.connection;
