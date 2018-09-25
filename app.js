@@ -10,9 +10,10 @@ var mongoose = require('./connect');
 var app = express();
 
 app.use(body_parser.json({limit: '50mb'}));
-app.use(body_parser.urlencoded({limit: '50mb', extended: true}));
+//app.use(body_parser.urlencoded({limit: '50mb', extended: true}));
 
 app.post('/newlead', function(req, res){
+
     console.log("********************************************************************************");
     console.log("req.query: ", req.query);
     console.log("********************************************************************************");
