@@ -13,32 +13,34 @@ app.use(body_parser.json({limit: '50mb'}));
 app.use(body_parser.urlencoded({limit: '50mb', extended: true}));
 
 app.post('/newlead', function(req, res){
+    var dealer = req.query.dealerid;
 
-    console.log("Nuevo lead para la empresa: ", req.query.dealerid);
-    console.log("\tRecipient:", req.body.recipient);
-    console.log("\tSender:", req.body.sender);
-    console.log("\tFrom:", req.body.from);
-    console.log("\tSubject:", req.body.subject);
-    console.log("\t---------------------------------------------------------------------------");
-    res.send('It worked!!!');
+    var lead = req.body;
+
+    console.log("Nuevo lead para la empresa: ", dealer);
+
+    if(lead) {
+        console.log("\tRecipient:", lead.recipient);
+        console.log("\tSender:", lead.sender);
+        console.log("\tFrom:", lead.from);
+        console.log("\tSubject:", lead.subject);
+        console.log("\t---------------------------------------------------------------------------");
+        res.send('It worked!!!');
+    } else{
+        console.log("Error in request POST");
+        res.send('Error in request POST');
+    }
     res.end();
-     //console.log("Request: ",req.body);
-    var message = new Message(req.body);
 
-    message.dealer = req.query.dealerid;
+
+    var message = new Message(lead);
+
+    message.dealer = dealer;
 
     Message.create(message, function(err) {
         if (err) throw err;
-
     });
     console.log("---------------------------------------------------------------------------");
-
-
-    /*
-    Message.create(message, function(err, inserted){
-        console.log("Insert message OK ", inserted);
-
-    })*/
 
 });
 
