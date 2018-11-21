@@ -54,7 +54,7 @@ app.post('/newlead', function(req, res){
 var server = app.listen(process.env.PORT || 3000, function(){
     console.log("Servidor inicializado en el puerto ", server.address().port);
 
-    console.log("usuario: ", process.env.ddbb-user);
+    console.log("usuario: ", process.env.dbuser);
 
 });
 
