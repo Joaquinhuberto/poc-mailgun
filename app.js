@@ -18,7 +18,7 @@ app.post('/newlead', function(req, res){
     console.log("********************************************************************************");
     console.log("req.query: ", req.query);
     console.log("********************************************************************************");
-    console.log("req.body: ", req.body);
+    console.log("req.body: ", req.body.data);
     console.log("********************************************************************************");
     var dealer = req.query.dealerid;
 
@@ -44,7 +44,7 @@ app.post('/newlead', function(req, res){
 
     message.dealer = dealer;
 
-    Message.create(message, function(err) {
+    Message.create(lead, function(err) {
         if (err) throw err;
     });
     console.log("---------------------------------------------------------------------------");
