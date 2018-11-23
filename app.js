@@ -39,10 +39,8 @@ app.post('/newlead', function(req, res){
     }
     res.end();
 
-
-    var message = new Message(lead);
-
-    message.dealer = dealer;
+    //var message = new Message(lead);
+    //message.dealer = dealer;
 
     Message.create(lead, function(err) {
         if (err) throw err;
