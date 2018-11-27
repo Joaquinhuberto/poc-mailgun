@@ -14,25 +14,16 @@ app.use(body_parser.urlencoded({limit: '50mb', extended: false}));
 app.use(body_parser.text({ type: 'text/html' }));
 
 app.post('/newlead', function(req, res){
-
-    console.log("********************************************************************************");
-    console.log("req.query: ", req.query);
-    console.log("********************************************************************************");
-    console.log("req.body: ", req.body.data);
-    console.log("********************************************************************************");
-    var dealer = req.query.dealerid;
-
     var lead = req.body;
-
+    var headers = lead['message-headers'];
+    var dealer = headers.substring(headers.indexOf('["To"')+8,headers.indexOf('"',headers.indexOf('["To"')+8));
     console.log("Nuevo lead para la empresa: ", dealer);
-
     if(lead) {
         console.log("\tRecipient:", lead.recipient);
         console.log("\tSender:", lead.sender);
         console.log("\tFrom:", lead.from);
         console.log("\tSubject:", lead.subject);
-        console.log("\t---------------------------------------------------------------------------");
-        res.send('It worked!!!');
+        res.send('It worked!!!  ---> email: ' + dealer);
     } else{
         console.log("Error in request POST");
         res.send('Error in request POST');
@@ -51,6 +42,7 @@ app.post('/newlead', function(req, res){
 
 var server = app.listen(process.env.PORT || 3000, function(){
     console.log("Servidor inicializado en el puerto ", server.address().port);
+    console.log("---------------------------------------------------------------------------");
 
 });
 
