@@ -40,6 +40,17 @@ app.post('/newlead', function(req, res){
 
 });
 
+
+app.post('/test', function(req, res){
+    var lead = req.body;
+    console.log("TEST:");
+    console.log(lead);
+    res.send('It worked!!!');
+    res.end();
+    console.log("---------------------------------------------------------------------------");
+
+});
+
 var server = app.listen(process.env.PORT || 3000, function(){
     console.log("Servidor inicializado en el puerto ", server.address().port);
     console.log("---------------------------------------------------------------------------");
