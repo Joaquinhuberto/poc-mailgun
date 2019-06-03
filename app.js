@@ -7,6 +7,7 @@ var formData = require('express-form-data');
 var body_parser = require('body-parser');
 var Message = require('./models/message.model');
 var mongoose = require('./connect');
+const os = require("os");
 
 var app = express();
 
@@ -15,7 +16,13 @@ app.use(body_parser.json({limit: '20mb'}));
 // app.use(body_parser.text({ type: 'text/html' }));
 // app.use(body_parser.raw({ type: 'multipart/form-data' }));
 
-app.use(formData.format());
+const options = {
+  uploadDir: os.tmpdir(),
+  autoClean: true
+};
+
+// parse data with connect-multiparty. 
+app.use(formData.parse(options));
 
 app.post('/newlead', function(req, res){
     var lead = req.body;
