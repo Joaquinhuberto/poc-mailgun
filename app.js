@@ -14,8 +14,14 @@ app.use(body_parser.urlencoded({limit: '20mb', extended: true}));
 app.use(body_parser.json({limit: '20mb'}));
 // app.use(body_parser.text({ type: 'text/html' }));
 // app.use(body_parser.raw({ type: 'multipart/form-data' }));
+const options = {
+  uploadDir: os.tmpdir(),
+  autoClean: true
+};
 
-app.use(formData.union());
+// parse data with connect-multiparty. 
+app.use(formData.parse(options));
+// app.use(formData.union());
 
 app.post('/newlead', function(req, res){
     var lead = req.body;
