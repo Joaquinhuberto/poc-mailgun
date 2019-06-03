@@ -9,9 +9,9 @@ var mongoose = require('./connect');
 
 var app = express();
 console.log("Entrando:");
-app.use(body_parser.json({limit: '50mb'}));
-app.use(body_parser.urlencoded({limit: '50mb', extended: false}));
-app.use(body_parser.text({ type: 'text/html' }));
+//app.use(body_parser.json({limit: '50mb'}));
+//app.use(body_parser.urlencoded({limit: '50mb', extended: false}));
+//app.use(body_parser.text({ type: 'text/html' }));
 
 app.post('/newlead', function(req, res){
     var lead = req.body;
@@ -42,6 +42,7 @@ app.post('/newlead', function(req, res){
 
 
 app.post('/test', function(req, res){
+    console.log("req: ", req);
     var lead = req.body;
     console.log("TEST:");
     console.log(lead);
