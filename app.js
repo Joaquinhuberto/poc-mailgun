@@ -3,19 +3,19 @@
  */
 
 var express = require('express');
+var formData = require('express-form-data');
 var body_parser = require('body-parser');
 var Message = require('./models/message.model');
 var mongoose = require('./connect');
-const formData = require("express-form-data");
 
 var app = express();
 
 app.use(body_parser.urlencoded({limit: '20mb', extended: true}));
 app.use(body_parser.json({limit: '20mb'}));
 //app.use(body_parser.text({ type: 'text/html' }));
-//app.use(body_parser.raw({limit: '20mb'}));
+app.use(body_parser.raw({ type: 'multipart/form-data' }));
 
-app.use(formData.stream());
+// app.use(formData.stream());
 
 app.post('/newlead', function(req, res){
     var lead = req.body;
