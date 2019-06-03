@@ -15,7 +15,7 @@ app.use(body_parser.json({limit: '20mb'}));
 // app.use(body_parser.text({ type: 'text/html' }));
 // app.use(body_parser.raw({ type: 'multipart/form-data' }));
 
-app.use(formData.union());
+app.use(formData.format());
 
 app.post('/newlead', function(req, res){
     var lead = req.body;
