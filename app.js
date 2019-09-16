@@ -21,7 +21,7 @@ app.use(multer({dest:os.tmpdir()+'/attachment/'}).any());
 app.post('/newlead', function(req, res){
     var lead = req.body;
     var attachment = lead ['attachment-1'];
-    console.log('attachment:' + attachment);
+    console.log('lead:' + lead);
     var headers = lead['message-headers'];
     var dealer = headers.substring(headers.indexOf('["To"')+8,headers.indexOf('"',headers.indexOf('["To"')+8));
     console.log("Nuevo lead para la empresa: ", dealer);
