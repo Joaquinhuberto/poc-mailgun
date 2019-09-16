@@ -3,11 +3,11 @@
  */
 
 var express = require('express');
+var formData = require('express-form-data');
 var body_parser = require('body-parser');
 var Message = require('./models/message.model');
 var mongoose = require('./connect');
 const os = require("os");
-var multer  = require('multer')
 
 var app = express();
 
@@ -16,12 +16,16 @@ app.use(body_parser.json({limit: '20mb'}));
 // app.use(body_parser.text({ type: 'text/html' }));
 // app.use(body_parser.raw({ type: 'multipart/form-data' }));
 
-app.use(multer({dest:os.tmpdir()+'/attachment/'}).any());
+const options = {
+  uploadDir: os.tmpdir(),
+  autoClean: true
+};
+
+// parse data with connect-multiparty. 
+app.use(formData.parse(options));
 
 app.post('/newlead', function(req, res){
     var lead = req.body;
-    var attachment = lead ['attachment-1'];
-    console.log('lead:' + lead);
     var headers = lead['message-headers'];
     var dealer = headers.substring(headers.indexOf('["To"')+8,headers.indexOf('"',headers.indexOf('["To"')+8));
     console.log("Nuevo lead para la empresa: ", dealer);
