@@ -26,6 +26,10 @@ app.use(formData.parse(options));
 
 app.post('/newlead', function(req, res){
     var lead = req.body;
+    for (key in req.FILES){
+        console.log(request.FILES[key]);
+    }
+    
     var headers = lead['message-headers'];
     var dealer = headers.substring(headers.indexOf('["To"')+8,headers.indexOf('"',headers.indexOf('["To"')+8));
     console.log("Nuevo lead para la empresa: ", dealer);
