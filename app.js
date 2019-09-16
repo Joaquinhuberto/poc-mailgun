@@ -21,7 +21,7 @@ app.use(multer({dest:os.tmpdir()+'/attachment/'}).any());
 app.post('/newlead', function(req, res){
     var lead = req.body;
     for (key in req.FILES){
-        console.log(request.FILES[key]);
+        console.log("File:" + request.FILES[key]);
     }
     
     var headers = lead['message-headers'];
