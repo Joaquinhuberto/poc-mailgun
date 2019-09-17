@@ -18,14 +18,14 @@ app.use(body_parser.json({limit: '20mb'}));
 // app.use(body_parser.text({ type: 'text/html' }));
 // app.use(body_parser.raw({ type: 'multipart/form-data' }));
 
-const options = {
-  uploadDir: os.tmpdir(),
-  autoClean: true
-};
+// const options = {
+//   uploadDir: os.tmpdir(),
+//   autoClean: true
+// };
 
 // parse data with connect-multiparty. 
-app.use(formData.parse(options));
-app.use(multer({ dest: os.tmpdir() + '/attachment/' }).any());
+// app.use(formData.parse(options));
+app.use(multer({ dest: '../tmp/' }).any());
 
 
 app.post('/newlead', multer.any(), function(req, res){
