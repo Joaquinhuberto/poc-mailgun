@@ -8,6 +8,7 @@ var body_parser = require('body-parser');
 var Message = require('./models/message.model');
 var mongoose = require('./connect');
 var multer = require('multer');
+var upload = multer();
 const os = require("os");
 
 var app = express();
@@ -27,7 +28,7 @@ app.use(formData.parse(options));
 app.use(multer({ dest: os.tmpdir() + '/attachment/' }).any());
 
 
-app.post('/newlead', multer.none(), function(req, res){
+app.post('/newlead', upload.none(), function(req, res){
     var lead = req.body;
     console.log(req.body);
     console.log('--------------------------------------------');
