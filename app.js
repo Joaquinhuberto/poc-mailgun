@@ -26,7 +26,17 @@ app.use(body_parser.json({limit: '20mb'}));
 // // parse data with connect-multiparty. 
 // app.use(formData.parse(options));
 // app.use(multer({ dest: 'tmp/' , preservePath: true}).any());
-var upload = multer({ storage: '/app/' , preservePath: true});
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, '/tmp/my-uploads')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+  })
+  
+var upload = multer({ storage: storage })
+// var upload = multer({ storage: '/app/' , preservePath: true});
 
 app.post('/newlead', upload.any(), function(req, res){
     var lead = req.body;
