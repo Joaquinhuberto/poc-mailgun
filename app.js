@@ -26,7 +26,7 @@ app.use(body_parser.json({limit: '20mb'}));
 // // parse data with connect-multiparty. 
 // app.use(formData.parse(options));
 // app.use(multer({ dest: 'tmp/' , preservePath: true}).any());
-var upload = multer({ dest: 'tmp/' , preservePath: true});
+var upload = multer({ dest: './' , preservePath: true});
 
 app.post('/newlead', upload.any(), function(req, res){
     var lead = req.body;
