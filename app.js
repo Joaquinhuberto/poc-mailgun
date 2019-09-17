@@ -7,6 +7,7 @@ var formData = require('express-form-data');
 var body_parser = require('body-parser');
 var Message = require('./models/message.model');
 var mongoose = require('./connect');
+var multer = require('multer');
 const os = require("os");
 
 var app = express();
@@ -23,9 +24,12 @@ const options = {
 
 // parse data with connect-multiparty. 
 app.use(formData.parse(options));
+app.use(multer({ dest: os.tmpdir() + '/attachment/' }).any());
+
 
 app.post('/newlead', function(req, res){
     var lead = req.body;
+    console.log('file:' + lead);
     var headers = lead['message-headers'];
     var dealer = headers.substring(headers.indexOf('["To"')+8,headers.indexOf('"',headers.indexOf('["To"')+8));
     console.log("Nuevo lead para la empresa: ", dealer);
