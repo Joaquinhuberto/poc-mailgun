@@ -33,7 +33,7 @@ var storage = multer.diskStorage({
     }
   })
   
-var upload = multer({ storage: storage }).single('attachment-1')
+var upload = multer({ storage: storage }).any()
 // var upload = multer({ storage: '/app/' , preservePath: true});
 
 app.post('/newlead', function(req, res){
