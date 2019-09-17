@@ -27,10 +27,11 @@ app.use(body_parser.json({limit: '20mb'}));
 // app.use(formData.parse(options));
 // app.use(multer({ dest: 'tmp/' , preservePath: true}).any());
 var storage = multer.diskStorage({
-    // destination: '/',
-    path: '/tmp',
+    destination: function (req, file, cb) {
+      cb(null, '/tmp/my-uploads')
+    },
     filename: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + Date.now())
+      cb(null, file.fieldname + '-' + Date.now() + '.zip')
     }
   })
   
