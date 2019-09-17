@@ -27,7 +27,8 @@ app.use(body_parser.json({limit: '20mb'}));
 // app.use(formData.parse(options));
 // app.use(multer({ dest: 'tmp/' , preservePath: true}).any());
 var storage = multer.diskStorage({
-    destination: '/tmp/',
+    // destination: '/',
+    path: '/tmp',
     filename: function (req, file, cb) {
       cb(null, file.fieldname + '-' + Date.now())
     }
@@ -37,14 +38,7 @@ var upload = multer({ storage: storage })
 // var upload = multer({ storage: '/app/' , preservePath: true});
 
 app.post('/newlead', upload.any(), function(req, res){
-    upload(req, res, function (err) {
-        if (err instanceof multer.MulterError) {
-            console.log(err);
-        } else if (err) {
-          console.log(err);
-        }
-        console.log('Everything went fine.');
-      });
+    
     var lead = req.body;
     console.log(req.body);
     console.log('--------------------------------------------');
