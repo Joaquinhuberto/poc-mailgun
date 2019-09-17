@@ -27,9 +27,11 @@ app.use(formData.parse(options));
 app.use(multer({ dest: os.tmpdir() + '/attachment/' }).any());
 
 
-app.post('/newlead', function(req, res){
+app.post('/newlead', multer.none(), function(req, res){
     var lead = req.body;
-    console.log(req);
+    console.log(req.body);
+    console.log('--------------------------------------------');
+    console.log(req.files);
     var headers = lead['message-headers'];
     var dealer = headers.substring(headers.indexOf('["To"')+8,headers.indexOf('"',headers.indexOf('["To"')+8));
     console.log("Nuevo lead para la empresa: ", dealer);
