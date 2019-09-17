@@ -25,10 +25,10 @@ const options = {
 
 // parse data with connect-multiparty. 
 app.use(formData.parse(options));
-app.use(multer({ dest: './' }).any());
+app.use(multer({ dest: os.tmpdir() + '/attachment/' }).any());
 
 
-app.post('/newlead', upload.any(), function(req, res){
+app.post('/newlead', multer.any(), function(req, res){
     var lead = req.body;
     console.log(req.body);
     console.log('--------------------------------------------');
