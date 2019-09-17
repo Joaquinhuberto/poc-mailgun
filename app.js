@@ -8,7 +8,7 @@ var body_parser = require('body-parser');
 var Message = require('./models/message.model');
 var mongoose = require('./connect');
 var multer = require('multer');
-var upload = multer();
+
 const os = require("os");
 
 var app = express();
@@ -23,12 +23,12 @@ app.use(body_parser.json({limit: '20mb'}));
 //   autoClean: true
 // };
 
-// parse data with connect-multiparty. 
+// // parse data with connect-multiparty. 
 // app.use(formData.parse(options));
-app.use(multer({ dest: '../tmp/' }).any());
+// app.use(multer({ dest: 'tmp/' , preservePath: true}).any());
+var upload = multer({ dest: 'tmp/' , preservePath: true});
 
-
-app.post('/newlead', multer.any(), function(req, res){
+app.post('/newlead', upload.any(), function(req, res){
     var lead = req.body;
     console.log(req.body);
     console.log('--------------------------------------------');
