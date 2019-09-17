@@ -33,10 +33,18 @@ var storage = multer.diskStorage({
     }
   })
   
-var upload = multer({ storage: storage })
+var upload = multer({ storage: storage }).single('attachment-1')
 // var upload = multer({ storage: '/app/' , preservePath: true});
 
-app.post('/newlead', upload.any(), function(req, res){
+app.post('/newlead', function(req, res){
+    upload(req, res, function (err) {
+        if (err instanceof multer.MulterError) {
+            console.log(err);
+        } else if (err) {
+          console.log(err);
+        }
+        console.log('Everything went fine.');
+      })
     var lead = req.body;
     console.log(req.body);
     console.log('--------------------------------------------');
