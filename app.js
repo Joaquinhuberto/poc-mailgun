@@ -70,9 +70,8 @@ app.post('/newlead', upload.any(), function(req, res){
 });
 
 app.post('/newlead/fail', upload.any(), function(req, res){
-    var lead = req.body;
+
     console.log("Fail:");
-    console.log(lead);
     res.send('It worked Now!!!!!!');
     console.log("---------------------------------------------------------------------------");
 
@@ -90,10 +89,6 @@ app.post('/test', function(req, res){
 });
 
 var server = app.listen(process.env.PORT || 3000, function(){
-    console.log("Servidor inicializado en el puerto ", server.address().port);
-    console.log("---------------------------------------------------------------------------");
-
-});var server = app.listen(process.env.PORT || 3000, function(){
     console.log("Servidor inicializado en el puerto ", server.address().port);
     console.log("---------------------------------------------------------------------------");
 
