@@ -69,13 +69,13 @@ app.post('/newlead', upload.any(), function(req, res){
 
 });
 
-app.post('/newlead/fail', upload.any(), function(req, res){
+// app.post('/newlead/fail', upload.any(), function(req, res){
 
-    console.log("Fail:");
-    res.send('It worked Now!!!!!!');
-    console.log("---------------------------------------------------------------------------");
+//     console.log("Fail:");
+//     res.send('It worked Now!!!!!!');
+//     console.log("---------------------------------------------------------------------------");
 
-});
+// });
 
 app.post('/test', function(req, res){
     console.log("req: ", req);
