@@ -28,7 +28,7 @@ app.use(body_parser.json({limit: '20mb'}));
 // app.use(multer({ dest: 'tmp/' , preservePath: true}).any());
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, '/tmp')
+      cb(null, '/app/uploads/')
     },
     filename: function (req, file, cb) {
       cb(null, file.fieldname + '-' + Date.now() + '.zip')
@@ -69,6 +69,14 @@ app.post('/newlead', upload.any(), function(req, res){
 
 });
 
+app.post('/newlead/fail', upload.any(), function(req, res){
+    var lead = req.body;
+    console.log("Fail:");
+    console.log(lead);
+    res.send('It worked Now!!!!!!');
+    console.log("---------------------------------------------------------------------------");
+
+});
 
 app.post('/test', function(req, res){
     console.log("req: ", req);
@@ -82,6 +90,10 @@ app.post('/test', function(req, res){
 });
 
 var server = app.listen(process.env.PORT || 3000, function(){
+    console.log("Servidor inicializado en el puerto ", server.address().port);
+    console.log("---------------------------------------------------------------------------");
+
+});var server = app.listen(process.env.PORT || 3000, function(){
     console.log("Servidor inicializado en el puerto ", server.address().port);
     console.log("---------------------------------------------------------------------------");
 
