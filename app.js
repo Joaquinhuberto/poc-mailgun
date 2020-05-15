@@ -74,10 +74,13 @@ app.post('/megadialer', upload.any(), function(req, res){
     req.body.$task_log.forEach(taskLog => {
         taskLog.transactions.forEach(transaction => {
             console.log('transaction: ' + JSON.stringify(transaction));
-            if(transaction.connections && transaction.connections.recordings){
-                transaction.connections.recordings.forEach(rec => {
-                    console.log(transaction.connections.sequence_nr);
-                    console.log(rec);
+            if(transaction.connections){
+                transaction.connections.forEach(connection => {
+                    console.log(connection.ssequence_nr);
+                    if (connection.recordings){
+                        connection.recordings.forEach(rec => console.log(rec))
+                    }
+                    
                 });
             }
         }); 
