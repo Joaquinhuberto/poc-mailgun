@@ -70,6 +70,12 @@ app.post('/megadialer', upload.any(), function(req, res){
 
     console.log("megadialer:");
     console.log(JSON.stringify(req.body));
+
+    req.body.$task_log.forEach(taskLog => {
+        taskLog.transactions.forEach(transaction => console.log(transaction)); 
+        
+    });
+    
     res.send('It worked Now!!!!!!');
     console.log("---------------------------------------------------------------------------");
 
