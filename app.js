@@ -66,9 +66,10 @@ app.post('/newlead', upload.any(), function(req, res){
 
 });
 
-app.post('/newlead/fail', upload.any(), function(req, res){
+app.post('/megadialer', upload.any(), function(req, res){
 
-    console.log("Fail:");
+    console.log("megadialer:");
+    console.log(req.body);
     res.send('It worked Now!!!!!!');
     console.log("---------------------------------------------------------------------------");
 
