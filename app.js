@@ -103,6 +103,16 @@ app.post('/test', function(req, res){
 
 });
 
+app.post('/teamleader', function(req, res){
+    var body = req.body;
+    console.log("teamleader:");
+    console.log(body);
+    res.send('It worked!!!');
+    res.end();
+    console.log("---------------------------------------------------------------------------");
+
+});
+
 var server = app.listen(process.env.PORT || 3000, function(){
     console.log("Servidor inicializado en el puerto ", server.address().port);
     console.log("---------------------------------------------------------------------------");
