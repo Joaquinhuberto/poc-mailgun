@@ -10,7 +10,7 @@
   "author": "Joaquín García",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "mongodb": "^3.1.6",
     "mongoose": "^5.2.17"
   },
